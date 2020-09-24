@@ -1,0 +1,27 @@
+{
+    "name": "@vladbasin/ts-music",
+    "version": "1.0.0",
+    "description": "Music services",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vladbasin/ts-music.git"
+    },
+    "scripts": {
+        "prepublishOnly": "rm -r -f dist && cd src && barrelsby --delete && cd .. && tsc"
+    },
+    "author": "Vlad Basin",
+    "license": "GPL-3.0-only",
+    "devDependencies": {
+        "@types/lodash": "^4.14.161",
+        "barrelsby": "^2.2.0",
+        "typescript": "^3.9.7"
+    },
+    "dependencies": {
+        "@vladbasin/ts-result": "^1.0.0",
+        "@vladbasin/ts-services": "^1.0.1",
+        "@vladbasin/ts-types": "^1.0.2",
+        "lodash": "^4.17.20"
+    }
+}
