@@ -1,5 +1,4 @@
 import { } from '@vladbasin/ts-services';
-import { isNil } from 'lodash';
 import { MusicNotesProviderContract } from "../Contracts/MusicNotesProviderContract";
 import { Language } from '../Models/Language';
 import { MusicNote } from "../Models/MusicNote";
@@ -8,12 +7,16 @@ export class MusicNotesProvider implements MusicNotesProviderContract {
     private readonly _allKeys: Map<string, MusicNote[]>;
  
     private readonly _keysStrings = {
-        [Language.en]: "G#|Ab,A,A#|Bb,B,C,C#|Db,D,D#|Eb,E,F,F#|Gb,G",
-        [Language.ru]: "G#|Ab,A,A#|B,H,C,C#|Db,D,D#|Eb,E,F,F#|Gb,G",
+        [Language.en]: "C,C#|Db,D,D#|Eb,E,F,F#|Gb,G,G#|Ab,A,A#|Bb,B",
+        [Language.ru]: "C,C#|Db,D,D#|Eb,E,F,F#|Gb,G,G#|Ab,A,A#|B,H",
     };
 
     constructor() {
         this._allKeys = this.createAllKeysMap();
+    }
+
+    public provideNote(step: number, language: string) {
+        return this.provideNotes(language)[step];
     }
 
     public provideNotes(language: string): MusicNote[] {
