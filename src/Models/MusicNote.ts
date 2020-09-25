@@ -1,4 +1,4 @@
-export class MusicKey {
+export class MusicNote {
     private readonly _primary: string;
     private readonly _secondary: string | undefined;
     private readonly _options: string[];

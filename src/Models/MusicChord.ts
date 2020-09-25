@@ -1,5 +1,5 @@
 import { } from '@vladbasin/ts-services';
-import { MusicKey } from "./MusicKey";
+import { MusicNote } from "./MusicNote";
 
 const MinorSuffix = "m";
 
@@ -13,21 +13,21 @@ export class MusicChord {
     public get string(): string { return this._chord; }
     public get isMinor(): boolean { return this._chord.endsWith(MinorSuffix); }
 
-    public is(key: MusicKey): boolean {
+    public is(key: MusicNote): boolean {
         const possibleOptions = [this.string, this.string.toUpperCase()];
 
-        return MusicChord.fromKeyAll(key, true).some(chord => possibleOptions.some(t => t === chord.string));
+        return MusicChord.fromNoteAll(key, true).some(chord => possibleOptions.some(t => t === chord.string));
     }
 
-    public static fromKey(key: MusicKey, isMinor: boolean): MusicChord {
+    public static fromNote(note: MusicNote, isMinor: boolean): MusicChord {
         const stringChord = isMinor
-            ? this.getMinor(key.primary)
-            : key.primary;
+            ? this.getMinor(note.primary)
+            : note.primary;
 
         return new MusicChord(stringChord);
     }
 
-    public static fromKeyAll(key: MusicKey, includeMinor: boolean): MusicChord[] {
+    public static fromNoteAll(key: MusicNote, includeMinor: boolean): MusicChord[] {
         return key.options.mapMany(keyOption => {
             const stringChords = [keyOption];
 

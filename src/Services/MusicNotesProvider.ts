@@ -1,10 +1,11 @@
 import { } from '@vladbasin/ts-services';
-import { MusicKeyProviderContract } from "../Contracts/MusicKeyProviderContract";
+import { isNil } from 'lodash';
+import { MusicNotesProviderContract } from "../Contracts/MusicNotesProviderContract";
 import { Language } from '../Models/Language';
-import { MusicKey } from "../Models/MusicKey";
+import { MusicNote } from "../Models/MusicNote";
 
-export class MusicKeyProvider implements MusicKeyProviderContract {
-    private readonly _allKeys: Map<Language, MusicKey[]>;
+export class MusicNotesProvider implements MusicNotesProviderContract {
+    private readonly _allKeys: Map<string, MusicNote[]>;
  
     private readonly _keysStrings = {
         [Language.en]: "G#|Ab,A,A#|Bb,B,C,C#|Db,D,D#|Eb,E,F,F#|Gb,G",
@@ -15,21 +16,21 @@ export class MusicKeyProvider implements MusicKeyProviderContract {
         this._allKeys = this.createAllKeysMap();
     }
 
-    public provideKeys(language: Language): MusicKey[] {
+    public provideNotes(language: string): MusicNote[] {
         return this._allKeys.get(language) || [];
     }
 
-    public provideAllKeys(): MusicKey[] {
+    public provideAllNotes(): MusicNote[] {
         return Array.from(this._allKeys.values()).mapMany(t => t);
     }
 
-    private createAllKeysMap(): Map<Language, MusicKey[]> {
+    private createAllKeysMap(): Map<Language, MusicNote[]> {
         const entries = Array.from(Object.entries(this._keysStrings));
 
-        const result = new Map<Language, MusicKey[]>();
+        const result = new Map<Language, MusicNote[]>();
 
         entries.forEach(localizedKeys => {
-            const keys = localizedKeys[1].split(',').map(optionString => new MusicKey(optionString));
+            const keys = localizedKeys[1].split(',').map(optionString => new MusicNote(optionString));
 
             result.set(localizedKeys[0] as Language, keys);
         });
