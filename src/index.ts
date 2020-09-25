@@ -4,6 +4,7 @@
 
 export * from "./Contracts/MusicKeysProviderContract";
 export * from "./Contracts/MusicNotesProviderContract";
+export * from "./Dependencies/MusicModule";
 export * from "./Dependencies/ServiceIds";
 export * from "./Models/Language";
 export * from "./Models/MusicChord";

@@ -1,6 +1,6 @@
 {
     "name": "@vladbasin/ts-music",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Music services",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
@@ -19,6 +19,7 @@
         "typescript": "^3.9.7"
     },
     "dependencies": {
+        "@vladbasin/ts-dependencies": "^1.0.2",
         "@vladbasin/ts-result": "^1.0.0",
         "@vladbasin/ts-services": "^1.0.1",
         "@vladbasin/ts-types": "^1.0.2",

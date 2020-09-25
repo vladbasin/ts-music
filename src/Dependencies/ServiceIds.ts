@@ -1,4 +1,4 @@
 export enum ServiceIds {
-    musicKeyProvider = "musicKeyProvider",
+    musicKeysProvider = "musicKeysProvider",
     musicNotesProvider = "musicNotesProvider",
 }
